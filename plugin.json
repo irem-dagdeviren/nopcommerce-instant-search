@@ -1,0 +1,11 @@
+{
+  "Group": "Widgets",
+  "FriendlyName": "InstantSearch",
+  "SystemName": "InstantSearch",
+  "Version": "1.0",
+  "SupportedVersions": [ "4.60" ],
+  "Author": "duzey",
+  "DisplayOrder": 1,
+  "FileName": "Nop.Plugin.InstantSearch.dll",
+  "Description": "This plugin is Instance Search plugin of SevenSpikes"
+}

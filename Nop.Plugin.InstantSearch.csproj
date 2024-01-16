@@ -1,0 +1,170 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <OutputPath>..\..\Presentation\Nop.Web\Plugins\InstantSearch</OutputPath>
+    <OutDir>$(OutputPath)</OutDir>
+
+    <!--Set this parameter to true to get the dlls copied from the NuGet cache to the output of your project.
+    You need to set this parameter to true if your plugin has a nuget package 
+    to ensure that the dlls copied from the NuGet cache to the output of your project-->
+    <CopyLocalLockFileAssemblies>false</CopyLocalLockFileAssemblies>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Update="Areas\Admin\Content\Scripts\admin.navigation.min.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Areas\Admin\Content\Scripts\admin.search.min.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Areas\Admin\Content\Scripts\Conditions.min.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Areas\Admin\Content\Scripts\custom.presets.min.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Areas\Admin\Content\Scripts\Scheduling.min.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Areas\Admin\Views\AdminNavigation\AdminNavigation.cshtml"> 
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Areas\Admin\Content\Scripts\admin.core.min.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Areas\Admin\Content\Styles\adminstyles.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Areas\Admin\Views\InstantSearchAdmin\Settings.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Areas\Admin\Views\NopCoreAdmin\AccessControl.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Areas\Admin\Views\NopCoreAdmin\Information.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Areas\Admin\Views\NopCoreAdmin\Warnings.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Areas\Admin\Views\Shared\ManageResources.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Areas\Admin\Views\Shared\_AdminLayout7Spikes.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Areas\Admin\Views\Shared\_AdminPopupLayout7Spikes.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Areas\Admin\Views\Shared\_CopyEntity.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Areas\Admin\Views\Shared\_ResetDefaultSettings.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Areas\Admin\Views\_ViewImports.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Images\ajax-loader-small.gif">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="logo.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="plugin.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Resources\ConditionsResources.en-us.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Resources\MappingsResources.en-us.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Resources\Resources.en-us.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Resources\SchedulingResources.en-us.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Scripts\InstantSearch.min.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Scripts\lib\kendo\2020.1.406\js\kendo.all.min.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Scripts\lib\kendo\2020.1.406\js\kendo.autocomplete.min.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Scripts\lib\kendo\2020.1.406\js\kendo.core.min.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Scripts\lib\kendo\2020.1.406\js\kendo.data.min.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Scripts\lib\kendo\2020.1.406\js\kendo.fx.min.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Scripts\lib\kendo\2020.1.406\js\kendo.list.min.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Scripts\lib\kendo\2020.1.406\js\kendo.popup.min.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Settings.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Styles\sidebar.navigation.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="SupportedWidgetZones.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Theme\DefaultClean\Content\InstantSearch.css">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Theme\DefaultClean\Content\InstantSearch.rtl.css">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Theme\Emporium\Content\images\select-arrow-dark.svg">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Theme\Emporium\Content\InstantSearch.css">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Theme\Emporium\Content\InstantSearch.rtl.css">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Views\Components\InstantSearch\InstantSearch.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Views\InstantSearch\_ShowAllResults.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Views\_ViewImports.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ClearPluginAssemblies Include="$(MSBuildProjectDirectory)\..\..\Build\ClearPluginAssemblies.proj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Presentation\Nop.Web\Nop.Web.csproj" />
+  </ItemGroup>
+
+  <!-- This target execute after "Build" target -->
+  <Target Name="NopTarget" AfterTargets="Build">
+    <!-- Delete unnecessary libraries from plugins path -->
+    <MSBuild Projects="@(ClearPluginAssemblies)" Properties="PluginPath=$(MSBuildProjectDirectory)\$(OutDir)" Targets="NopClear" />
+  </Target>
+
+</Project>
