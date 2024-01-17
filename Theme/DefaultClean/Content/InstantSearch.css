@@ -26,11 +26,12 @@ input.search-box-text {
     }
 
   input.search-box-text.instant-search-busy {
-    background: #fff url('../../../images/ajax-loader-small.gif') no-repeat left;
+    background: #fff url('../../../images/ajax-loader-small.gif') no-repeat right;
   }
 
   input.search-box-text.narrow.instant-search-busy {
-    background-position: 104px center;
+    background-position: right;
+    float: right;
   }
 
   input.search-box-text:focus {
@@ -137,7 +138,7 @@ input.search-box-text {
     }
 
     input.search-box-text.instant-search-busy {
-      background-position: 234px center;
+      background-position: calc(100% - 20px);
     }
 
     input.search-box-text.narrow.instant-search-busy {
