@@ -22,7 +22,7 @@ namespace Nop.Plugin.InstantSearch.Controllers
         private readonly ICategoryService7Spikes _categoryServiceSevenSpikes;
         private readonly ISettingService _settingService;
         private readonly IInstantSearchProductModelFactory _instantSearchProductModelFactory;
-        private readonly InstantSearchSettings _instantSearchSettings;
+        private readonly DuzeySearchSettings _instantSearchSettings;
         private readonly ICustomerService _customerService;
 
 
@@ -33,7 +33,7 @@ namespace Nop.Plugin.InstantSearch.Controllers
               ICategoryService7Spikes categoryServiceSevenSpikes,
               ISettingService settingService,
               IInstantSearchProductModelFactory instantSearchProductModelFactory,
-              InstantSearchSettings instantSearchSettings,
+              DuzeySearchSettings instantSearchSettings,
               ICustomerService customerService
       )
         {
@@ -81,7 +81,7 @@ namespace Nop.Plugin.InstantSearch.Controllers
                 products = await searchController.GetProductsAsync(q);
 
             ISettingService isettingService = searchController._settingService;
-            int num = await isettingService.GetSettingByKeyAsync<bool>("instantsearchsettings.preparespecificationattributes", false, ((BaseEntity)await searchController._storeContext.GetCurrentStoreAsync()).Id, true) ? 1 : 0;
+            int num = await isettingService.GetSettingByKeyAsync<bool>("duzeysearchsettings.preparespecificationattributes", false, ((BaseEntity)await searchController._storeContext.GetCurrentStoreAsync()).Id, true) ? 1 : 0;
             isettingService = (ISettingService)null;
             bool flag = num != 0;
             IEnumerable<ProductOverviewModel> productOverviewModels = await searchController._instantSearchProductModelFactory.PrepareProductOverviewModelsAsync((IEnumerable<Product>)products, true, true, new int?(searchController._instantSearchSettings.PictureSize), flag, false);

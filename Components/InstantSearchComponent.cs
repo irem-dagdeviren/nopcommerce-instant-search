@@ -27,7 +27,7 @@ namespace Nop.Plugin.InstantSearch.Components
     private readonly IAclHelper _aclHelper;
     private readonly IStaticCacheManager _staticCacheManager;
     private readonly CatalogSettings _catalogSettings;
-    private readonly InstantSearchSettings _instantSearchSettings;
+    private readonly DuzeySearchSettings _instantSearchSettings;
     private readonly IRepository<Manufacturer> _manufacturerRepository;
     private readonly IRepository<Vendor> _vendorRepository;
 
@@ -38,7 +38,7 @@ namespace Nop.Plugin.InstantSearch.Components
           IAclHelper aclHelper,
           IStaticCacheManager staticCacheManager,
           CatalogSettings catalogSettings,
-          InstantSearchSettings instantSearchSettings,
+          DuzeySearchSettings instantSearchSettings,
           IRepository<Manufacturer> manufacturerRepository,
           IRepository<Vendor> vendorRepository
       )

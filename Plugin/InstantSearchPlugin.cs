@@ -20,7 +20,7 @@ namespace Nop.Plugin.InstantSearch.Plugin
             this._settingService = settingService;
         }
 
-        public override string GetConfigurationPageUrl() => this.StoreLocation + "Admin/InstantSearchAdmin/Settings";
+        public override string GetConfigurationPageUrl() => this.StoreLocation + "Admin/InstantSearchAdmin/InstantSearchSettings";
 
         protected override async Task InstallAdditionalSettingsAsync()
         {
@@ -38,7 +38,7 @@ namespace Nop.Plugin.InstantSearch.Plugin
             var menuItem7SpikesList = new List<MenuItem7Spikes>();
             var menuItem7Spikes = new MenuItem7Spikes();
             menuItem7Spikes.SubMenuName = "InstantSearch.Admin.Submenus.Settings";
-            menuItem7Spikes.SubMenuRelativePath = "InstantSearchAdmin/Settings";
+            menuItem7Spikes.SubMenuRelativePath = "InstantSearchAdmin/InstantSearchSettings";
             menuItem7SpikesList.Add(menuItem7Spikes);
             MenuItems = menuItem7SpikesList;
         }

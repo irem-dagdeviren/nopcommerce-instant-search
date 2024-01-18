@@ -37,9 +37,9 @@ namespace Nop.Plugin.InstantSearch.Infrastructure
         intList = (List<int>) null;
         foreach (int storeId in storeIds)
         {
-          if (await settingService.GetSettingByKeyAsync<bool>("instantsearchsettings.enablecategorysearch", false, storeId, false))
-            await settingService.SetSettingAsync<int>("instantsearchsettings.searchoption", 1, storeId, true);
-          Setting settingAsync = await settingService.GetSettingAsync("instantsearchsettings.enablecategorysearch", storeId, false);
+          if (await settingService.GetSettingByKeyAsync<bool>("duzeysearchsettings.enablecategorysearch", false, storeId, false))
+            await settingService.SetSettingAsync<int>("duzeysearchsettings.searchoption", 1, storeId, true);
+          Setting settingAsync = await settingService.GetSettingAsync("duzeysearchsettings.enablecategorysearch", storeId, false);
           if (settingAsync != null)
             await settingService.DeleteSettingAsync(settingAsync);
         }

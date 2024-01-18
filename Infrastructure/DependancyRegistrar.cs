@@ -6,6 +6,6 @@ namespace Nop.Plugin.InstantSearch.Infrastructure
 {
   public class DependancyRegistrar : BaseDependancyRegistrar7Spikes
   {
-    protected override void CreateModelMappings() => this.CreateMvcModelMap<InstantSearchSettingsModel, InstantSearchSettings>();
+    protected override void CreateModelMappings() => this.CreateMvcModelMap<InstantSearchSettingsModel, DuzeySearchSettings>();
   }
 }

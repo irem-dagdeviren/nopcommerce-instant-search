@@ -11,7 +11,7 @@ namespace Nop.Plugin.InstantSearch.Helpers
       string settingKey,
       string pluginSystemName,
       T themeSettings)
-      where T : Base7SpikesThemeSettings, new();
+      where T : BaseDuzeyThemeSettings, new();
 
     Task MovePresetFromSettingsToGenericAttributeAsync(string settingKey, string pluginSystemName);
 

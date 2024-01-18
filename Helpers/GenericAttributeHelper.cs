@@ -120,7 +120,7 @@ namespace Nop.Plugin.InstantSearch.Helpers
           string pluginSystemName,
           T themeSettings,
           int storeId)
-          where T : Base7SpikesThemeSettings, new()
+          where T : BaseDuzeyThemeSettings, new()
         {
             string settingByKeyAsync = await this._settingsService.GetSettingByKeyAsync<string>(settingKey, (string)null, storeId, false);
             if (string.IsNullOrEmpty(settingByKeyAsync))

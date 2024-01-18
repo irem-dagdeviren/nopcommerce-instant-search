@@ -5,6 +5,7 @@
 
 .search-box form {
   position: relative;
+  display: flex;
 }
 
 span.search-box-text {
@@ -18,7 +19,7 @@ input.search-box-text {
 }
 
   input.search-box-text.narrow {
-    width: 130px !important;
+    width: 100%;
   }
 
     input.search-box-text.narrow:focus {
@@ -134,7 +135,7 @@ input.search-box-text {
   }
 
     input.search-box-text.narrow {
-      width: 180px !important;
+      width: 100%;
     }
 
     input.search-box-text.instant-search-busy {
@@ -163,6 +164,6 @@ input.search-box-text {
 @media all and (min-width: 1001px) {
 
   .search-box-select {
-    height: 40px;
+    height: 47px;
   }
 }
