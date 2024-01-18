@@ -5,16 +5,12 @@ using Microsoft.Extensions.DependencyInjection;
 using Nop.Core;
 using Nop.Core.Infrastructure;
 using Nop.Services.Localization;
-using Nop.Web.Framework.Extensions;
 using Nop.Web.Framework.Models;
 using Nop.Plugin.InstantSearch.Areas.Admin.Models;
 using Nop.Plugin.InstantSearch.Trial;
-using System;
-using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.Net;
 using System.Text;
-using System.Threading.Tasks;
 
 
 #nullable enable

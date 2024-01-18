@@ -17,9 +17,9 @@ namespace Nop.Plugin.InstantSearch.Infrastructure
         IEndpointRouteBuilder endpointRouteBuilder)
     {
             RouteProvider routeProvider = this;
-            endpointRouteBuilder.MapControllerRoute(name: "InstantSearchFor",
-                     pattern: "InstantSearchFor",
-                     defaults: new { controller = "InstantSearch", action = "InstantSearchFor" });
+            endpointRouteBuilder.MapControllerRoute(name: "InstantSearchForAction",
+                     pattern: "InstantSearchForAction",
+                     defaults: new { controller = "InstantSearch", action = "InstantSearchForAction" });
 
         }
 

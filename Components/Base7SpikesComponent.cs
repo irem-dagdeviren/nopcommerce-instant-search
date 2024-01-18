@@ -1,12 +1,10 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Nop.Core.Caching;
 using Nop.Core.Infrastructure;
-using Nop.Data;
 using Nop.Services.Customers;
 using Nop.Services.Localization;
 using Nop.Services.Seo;
 using Nop.Web.Framework.Components;
-using Nop.Web.Models.Catalog;
 
 namespace Nop.Plugin.InstantSearch.Components
 {

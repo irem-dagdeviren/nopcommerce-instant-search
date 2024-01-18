@@ -14,7 +14,6 @@ using Nop.Plugin.InstantSearch.Models;
 using Nop.Plugin.InstantSearch.Services.Catalog;
 using Nop.Plugin.InstantSearch.Services.Helpers;
 using Nop.Data;
-using NUglify.Helpers;
 using Nop.Core.Domain.Vendors;
 
 namespace Nop.Plugin.InstantSearch.Components
@@ -37,8 +36,6 @@ namespace Nop.Plugin.InstantSearch.Components
           IStoreContext storeContext,
           ICategoryService7Spikes categoryServiceSevenSpikes,
           IAclHelper aclHelper,
-          IManufacturerService manufacturerService,
-          IVendorService vendorService,
           IStaticCacheManager staticCacheManager,
           CatalogSettings catalogSettings,
           InstantSearchSettings instantSearchSettings,

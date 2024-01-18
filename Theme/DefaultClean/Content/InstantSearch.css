@@ -65,7 +65,7 @@ input.search-box-text {
   }
 
   .instantSearch .k-list-container {
-    width: 100% !important;
+    width: calc(100% - 47px);
     position: static !important;
   }
 

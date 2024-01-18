@@ -1,13 +1,7 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.DependencyInjection.Extensions;
 using Nop.Core.Infrastructure;
-using Microsoft.AspNetCore.Mvc.ApplicationParts;
-using FluentValidation;
-using Microsoft.AspNetCore.Mvc.Filters;
-using Microsoft.AspNetCore.Mvc.Razor;
-using System.Reflection;
 using Nop.Plugin.InstantSearch.ActionFilters;
 using Nop.Plugin.InstantSearch.Helpers;
 using Nop.Plugin.InstantSearch.Services.Catalog;

@@ -8,11 +8,8 @@ using Nop.Plugin.InstantSearch.Services.Catalog;
 using Nop.Services.Catalog;
 using Nop.Services.Configuration;
 using Nop.Services.Customers;
-using Nop.Services.Seo;
-using Nop.Web.Factories;
 using Nop.Web.Framework.Models;
 using Nop.Web.Models.Catalog;
-using Nop.Web.Models.Media;
 using UrlHelperExtensions = Nop.Web.Framework.Mvc.Routing.UrlHelperExtensions;
 
 namespace Nop.Plugin.InstantSearch.Controllers
@@ -37,7 +34,6 @@ namespace Nop.Plugin.InstantSearch.Controllers
               ISettingService settingService,
               IInstantSearchProductModelFactory instantSearchProductModelFactory,
               InstantSearchSettings instantSearchSettings,
-              IViewComponentHelper viewComponentHelper,
               ICustomerService customerService
       )
         {
@@ -51,7 +47,7 @@ namespace Nop.Plugin.InstantSearch.Controllers
             _instantSearchProductModelFactory = instantSearchProductModelFactory;
         }
 
-        public async Task<ActionResult> InstantSearchFor(
+        public async Task<ActionResult> InstantSearchForAction(
           string q,
           int categoryId = 0,
           int manufacturerId = 0,

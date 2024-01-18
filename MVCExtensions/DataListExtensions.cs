@@ -1,12 +1,7 @@
 ﻿using Microsoft.AspNetCore.Html;
 using Microsoft.AspNetCore.Mvc.Razor;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using Nop.Web.Framework.Extensions;
-using System;
-using System.Collections.Generic;
 using System.Text;
-using System.Threading.Tasks;
-
 
 #nullable enable
 namespace Nop.Plugin.InstantSearch.MVCExtensions

@@ -1,5 +1,4 @@
-﻿
-namespace Nop.Plugin.InstantSearch.Helpers
+﻿namespace Nop.Plugin.InstantSearch.Helpers
 {
   public interface IPresetsHelper
   {

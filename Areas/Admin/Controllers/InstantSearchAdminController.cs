@@ -54,7 +54,7 @@ namespace Nop.Plugin.InstantSearch.Areas.Admin.Controllers
         }
 
 
-        public async Task<ActionResult> Settings()
+        public async Task<ActionResult> InstantSearchSettings()
     {
             InstantSearchAdminController searchAdminController = this;
             int storeScope = await searchAdminController.StoreContext.GetActiveStoreScopeConfigurationAsync();
@@ -150,7 +150,7 @@ namespace Nop.Plugin.InstantSearch.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult> Settings(
+        public async Task<ActionResult> InstantSearchSettings(
       InstantSearchSettingsModel model,
       bool returnPartialView)
         {
@@ -209,7 +209,7 @@ namespace Nop.Plugin.InstantSearch.Areas.Admin.Controllers
             string resourceAsync = await searchAdminController._localizationService.GetResourceAsync("Admin.Configuration.Updated");
             searchAdminController.SuccessNotification(resourceAsync);
             ((BaseController)searchAdminController).SaveSelectedTabName("", true);
-            ActionResult action = (ActionResult)((ControllerBase)searchAdminController).RedirectToAction(nameof(Settings));
+            ActionResult action = (ActionResult)((ControllerBase)searchAdminController).RedirectToAction(nameof(InstantSearchSettings));
             storeScopeSetting = (StoreScopeSettingsHelper<InstantSearchSettings>)null;
             return action;
         }

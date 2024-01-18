@@ -17,19 +17,11 @@ using Nop.Web.Areas.Admin.Infrastructure.Mapper.Extensions;
 using Nop.Web.Areas.Admin.Models.Common;
 using Nop.Web.Areas.Admin.Models.Customers;
 using Nop.Web.Areas.Admin.Models.Security;
-using Nop.Web.Framework.Controllers;
-using Nop.Plugin.InstantSearch;
 using Nop.Plugin.InstantSearch.Areas.Admin.Models;
 using Nop.Plugin.InstantSearch.Plugin;
-using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.IO;
-using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
-using System.Threading.Tasks;
-using MailKit;
 
 
 #nullable enable

@@ -1,8 +1,6 @@
 ﻿using Nop.Plugin.InstantSearch.Dotless;
 using Nop.Core;
 using Nop.Core.Infrastructure;
-using System;
-using System.IO;
 using System.Text.RegularExpressions;
 
 namespace Nop.Plugin.InstantSearch.Helpers

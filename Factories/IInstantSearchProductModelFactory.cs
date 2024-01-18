@@ -1,5 +1,4 @@
-﻿using Nop.Core.Domain.Orders;
-using Nop.Web.Models.Catalog;
+﻿using Nop.Web.Models.Catalog;
 using Nop.Core.Domain.Catalog;
 
 namespace Nop.Plugin.InstantSearch.Factories
