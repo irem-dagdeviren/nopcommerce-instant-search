@@ -1,15 +1,12 @@
-﻿using Microsoft.CodeAnalysis;
-using System.Runtime.InteropServices;
-using Microsoft.CodeAnalysis.Operations;
+﻿using System.Runtime.InteropServices;
 namespace System.Runtime.CompilerServices
 {
-  [CompilerGenerated]
-  //[Embedded]
-  [AttributeUsage(AttributeTargets.Module, AllowMultiple = false, Inherited = false)]
-  internal sealed class RefSafetyRulesAttribute : Attribute
-  {
-    public readonly int Version;
+    [CompilerGenerated]
+    [AttributeUsage(AttributeTargets.Module, AllowMultiple = false, Inherited = false)]
+    internal sealed class RefSafetyRulesAttribute : Attribute
+    {
+        public readonly int Version;
 
-    public RefSafetyRulesAttribute([In] int obj0) => this.Version = obj0;
-  }
+        public RefSafetyRulesAttribute([In] int obj0) => this.Version = obj0;
+    }
 }

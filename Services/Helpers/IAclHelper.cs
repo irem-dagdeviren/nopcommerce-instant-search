@@ -2,8 +2,8 @@
 
 namespace Nop.Plugin.InstantSearch.Services.Helpers
 {
-  public interface IAclHelper
-  {
+    public interface IAclHelper
+    {
         Task<IQueryable<Product>> GetAvailableProductsForCurrentCustomerAsync();
 
         Task<IQueryable<Manufacturer>> GetAvailableManufacturersForCurrentCustomerAsync();

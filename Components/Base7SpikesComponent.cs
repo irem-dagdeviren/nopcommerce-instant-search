@@ -9,50 +9,17 @@ using Nop.Web.Framework.Components;
 namespace Nop.Plugin.InstantSearch.Components
 {
     public abstract class Base7SpikesComponent : NopViewComponent
-  {
-    private ILocalizationService _localizationService;
-    private IUrlRecordService _urlRecordService;
-    private ICustomerService _customerService;
-    private IStaticCacheManager _staticCacheManager;
-
-    protected ILocalizationService LocalizationService
     {
-      get
-      {
-        if (this._localizationService == null)
-          this._localizationService = EngineContext.Current.Resolve<ILocalizationService>((IServiceScope) null);
-        return this._localizationService;
-      }
-    }
+        private IStaticCacheManager _staticCacheManager;
 
-    protected IUrlRecordService UrlRecordService
-    {
-      get
-      {
-        if (this._urlRecordService == null)
-          this._urlRecordService = EngineContext.Current.Resolve<IUrlRecordService>((IServiceScope) null);
-        return this._urlRecordService;
-      }
+        protected IStaticCacheManager StaticCacheManager
+        {
+            get
+            {
+                if (this._staticCacheManager == null)
+                    this._staticCacheManager = EngineContext.Current.Resolve<IStaticCacheManager>((IServiceScope) null);
+                return this._staticCacheManager;
+            }
+        }
     }
-
-    protected ICustomerService CustomerService
-    {
-      get
-      {
-        if (this._customerService == null)
-          this._customerService = EngineContext.Current.Resolve<ICustomerService>((IServiceScope) null);
-        return this._customerService;
-      }
-    }
-
-    protected IStaticCacheManager StaticCacheManager
-    {
-      get
-      {
-        if (this._staticCacheManager == null)
-          this._staticCacheManager = EngineContext.Current.Resolve<IStaticCacheManager>((IServiceScope) null);
-        return this._staticCacheManager;
-      }
-    }
-  }
 }

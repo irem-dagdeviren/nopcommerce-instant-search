@@ -11,48 +11,46 @@ using Nop.Plugin.InstantSearch.Routing;
 
 namespace Nop.Plugin.InstantSearch.Infrastructure
 {
-  public class RouteProvider : BaseRouteProvider
-  {    
-    protected override async Task RegisterRoutesAccessibleByNameAsync(
-        IEndpointRouteBuilder endpointRouteBuilder)
-    {
-            RouteProvider routeProvider = this;
-            endpointRouteBuilder.MapControllerRoute(name: "InstantSearchForAction",
-                     pattern: "InstantSearchForAction",
-                     defaults: new { controller = "InstantSearch", action = "InstantSearchForAction" });
-
-        }
+    public class RouteProvider : BaseRouteProvider
+    {    
+        protected override async Task RegisterRoutesAccessibleByNameAsync(
+            IEndpointRouteBuilder endpointRouteBuilder)
+        {
+                RouteProvider routeProvider = this;
+                endpointRouteBuilder.MapControllerRoute(name: "InstantSearchForAction",
+                            pattern: "InstantSearchForAction",
+                            defaults: new { controller = "InstantSearch", action = "InstantSearchForAction" });
+            }
 
         protected override  string PluginSystemName => "InstantSearch";
 
-    protected override  async Task CheckBackwardCompatibilityAsync()
-    {
-      ISettingService settingService = EngineContext.Current.Resolve<ISettingService>((IServiceScope) null);
-      IStoreService storeService = EngineContext.Current.Resolve<IStoreService>((IServiceScope) null);
-      if (await settingService.GetSettingByKeyAsync<bool>("InstantSearchCommonSettings.LoadStoreSettingsOnLoad", true, 0, false))
-      {
-        List<int> storeIds = new List<int>() { 0 };
-        List<int> intList = storeIds;
-        intList.AddRange((await storeService.GetAllStoresAsync()).Select<Store, int>((Func<Store, int>) (store => ((BaseEntity) store).Id)));
-        intList = (List<int>) null;
-        foreach (int storeId in storeIds)
+        protected override  async Task CheckBackwardCompatibilityAsync()
         {
-          if (await settingService.GetSettingByKeyAsync<bool>("duzeysearchsettings.enablecategorysearch", false, storeId, false))
-            await settingService.SetSettingAsync<int>("duzeysearchsettings.searchoption", 1, storeId, true);
-          Setting settingAsync = await settingService.GetSettingAsync("duzeysearchsettings.enablecategorysearch", storeId, false);
-          if (settingAsync != null)
-            await settingService.DeleteSettingAsync(settingAsync);
+            ISettingService settingService = EngineContext.Current.Resolve<ISettingService>((IServiceScope) null);
+            IStoreService storeService = EngineContext.Current.Resolve<IStoreService>((IServiceScope) null);
+            if (await settingService.GetSettingByKeyAsync<bool>("DuzeySearchCommonSettings.LoadStoreSettingsOnLoad", true, 0, false))
+            {
+            List<int> storeIds = new List<int>() { 0 };
+            List<int> intList = storeIds;
+            intList.AddRange((await storeService.GetAllStoresAsync()).Select<Store, int>((Func<Store, int>) (store => ((BaseEntity) store).Id)));
+            intList = (List<int>) null;
+            foreach (int storeId in storeIds)
+            {
+                if (await settingService.GetSettingByKeyAsync<bool>("duzeysearchsettings.enablecategorysearch", false, storeId, false))
+                await settingService.SetSettingAsync<int>("duzeysearchsettings.searchoption", 1, storeId, true);
+                Setting settingAsync = await settingService.GetSettingAsync("duzeysearchsettings.enablecategorysearch", storeId, false);
+                if (settingAsync != null)
+                await settingService.DeleteSettingAsync(settingAsync);
+            }
+            storeIds = (List<int>) null;
+            }
+            await base.CheckBackwardCompatibilityAsync();
+            settingService = (ISettingService) null;
+            storeService = (IStoreService) null;
         }
-        storeIds = (List<int>) null;
-      }
-      await base.CheckBackwardCompatibilityAsync();
-      settingService = (ISettingService) null;
-      storeService = (IStoreService) null;
-    }
 
-    public  RouteProvider()
-      : base(true)
-    {
+        public  RouteProvider() : base(true)
+        {
+        }
     }
-  }
 }

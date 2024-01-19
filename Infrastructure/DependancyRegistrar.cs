@@ -4,8 +4,8 @@ using Nop.Plugin.InstantSearch.Domain;
 
 namespace Nop.Plugin.InstantSearch.Infrastructure
 {
-  public class DependancyRegistrar : BaseDependancyRegistrar7Spikes
-  {
-    protected override void CreateModelMappings() => this.CreateMvcModelMap<InstantSearchSettingsModel, DuzeySearchSettings>();
-  }
+    public class DependancyRegistrar : BaseDependancyRegistrar7Spikes
+    {
+        protected override void CreateModelMappings() => this.CreateMvcModelMap<InstantSearchSettingsModel, DuzeySearchSettings>();
+    }
 }

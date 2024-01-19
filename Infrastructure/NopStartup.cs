@@ -6,7 +6,6 @@ using Nop.Plugin.InstantSearch.ActionFilters;
 using Nop.Plugin.InstantSearch.Helpers;
 using Nop.Plugin.InstantSearch.Services.Catalog;
 using Nop.Plugin.InstantSearch.Services.Helpers;
-using Nop.Plugin.InstantSearch.Theme;
 using Nop.Plugin.InstantSearch.ViewLocations;
 using Nop.Services.Media;
 using Nop.Services.Configuration;
@@ -19,7 +18,6 @@ namespace Nop.Plugin.InstantSearch.Infrastructure
         public int Order => 3000;
         public void Configure(IApplicationBuilder application)
         {
-           
         }
 
         public void ConfigureServices(IServiceCollection services, IConfiguration configuration)
@@ -30,20 +28,9 @@ namespace Nop.Plugin.InstantSearch.Infrastructure
             services.AddScoped<GlobalActionFiltersProvider>();
             services.AddScoped<ICategoryService7Spikes, CategoryService7Spikes>();
             services.AddScoped<IAclHelper, AclHelper>();
-            services.AddScoped<IThemeService, ThemeService>();
             services.AddScoped<IPictureService, PictureService>();
             services.AddScoped<ISettingService, SettingService>();
             services.AddScoped<IInstantSearchProductModelFactory, InstantSearchProductModelFactory>();
-            // services.AddControllersWithViews().AddRazorRuntimeCompilation();
-            //services.AddControllersWithViews();
-
-
-
-
         }
-
-            private T GetServiceFromCollection<T>(IServiceCollection services) => (T)services.LastOrDefault<ServiceDescriptor>((Func<ServiceDescriptor, bool>)(d => d.ServiceType == typeof(T)))?.ImplementationInstance;
-        
-    
     }
 }

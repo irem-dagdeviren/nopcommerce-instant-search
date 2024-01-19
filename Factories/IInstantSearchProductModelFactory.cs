@@ -5,7 +5,6 @@ namespace Nop.Plugin.InstantSearch.Factories
 {
     public partial interface IInstantSearchProductModelFactory
     {
-
         Task<IEnumerable<ProductOverviewModel>> PrepareProductOverviewModelsAsync(IEnumerable<Product> products,
             bool preparePriceModel = true, bool preparePictureModel = true,
             int? productThumbPictureSize = null, bool prepareSpecificationAttributes = false,

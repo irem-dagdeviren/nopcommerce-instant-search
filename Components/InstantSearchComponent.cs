@@ -3,8 +3,6 @@ using Nop.Core;
 using Nop.Core.Caching;
 using Nop.Core.Domain.Catalog;
 using Nop.Core.Domain.Stores;
-using Nop.Services.Catalog;
-using Nop.Services.Vendors;
 using Nop.Web.Framework.Components;
 using Nop.Web.Models.Catalog;
 using Nop.Plugin.InstantSearch.Theme;
@@ -18,44 +16,43 @@ using Nop.Core.Domain.Vendors;
 
 namespace Nop.Plugin.InstantSearch.Components
 {
-  [ViewComponent(Name = "InstantSearch")]
-  public class InstantSearchComponent : Base7SpikesComponent
-  {
-    private readonly IWorkContext _workContext;
-    private readonly IStoreContext _storeContext;
-    private readonly ICategoryService7Spikes _categoryServiceSevenSpikes;
-    private readonly IAclHelper _aclHelper;
-    private readonly IStaticCacheManager _staticCacheManager;
-    private readonly CatalogSettings _catalogSettings;
-    private readonly DuzeySearchSettings _instantSearchSettings;
-    private readonly IRepository<Manufacturer> _manufacturerRepository;
-    private readonly IRepository<Vendor> _vendorRepository;
+    [ViewComponent(Name = "InstantSearch")]
+    public class InstantSearchComponent : Base7SpikesComponent
+    {
+        private readonly IWorkContext _workContext;
+        private readonly IStoreContext _storeContext;
+        private readonly ICategoryService7Spikes _categoryServiceSevenSpikes;
+        private readonly IAclHelper _aclHelper;
+        private readonly IStaticCacheManager _staticCacheManager;
+        private readonly CatalogSettings _catalogSettings;
+        private readonly DuzeySearchSettings _instantSearchSettings;
+        private readonly IRepository<Manufacturer> _manufacturerRepository;
+        private readonly IRepository<Vendor> _vendorRepository;
 
         public InstantSearchComponent(
-          IWorkContext workContext,
-          IStoreContext storeContext,
-          ICategoryService7Spikes categoryServiceSevenSpikes,
-          IAclHelper aclHelper,
-          IStaticCacheManager staticCacheManager,
-          CatalogSettings catalogSettings,
-          DuzeySearchSettings instantSearchSettings,
-          IRepository<Manufacturer> manufacturerRepository,
-          IRepository<Vendor> vendorRepository
-      )
-    {
-      this._storeContext = storeContext;
-      this._categoryServiceSevenSpikes = categoryServiceSevenSpikes;
-      this._aclHelper = aclHelper;
-      this._workContext = workContext;
-      this._staticCacheManager = staticCacheManager;
-      this._catalogSettings = catalogSettings;
-      this._instantSearchSettings = instantSearchSettings;
-      this._manufacturerRepository = manufacturerRepository;
-      this._vendorRepository = vendorRepository;
-    }
+            IWorkContext workContext,
+            IStoreContext storeContext,
+            ICategoryService7Spikes categoryServiceSevenSpikes,
+            IAclHelper aclHelper,
+            IStaticCacheManager staticCacheManager,
+            CatalogSettings catalogSettings,
+            DuzeySearchSettings instantSearchSettings,
+            IRepository<Manufacturer> manufacturerRepository,
+            IRepository<Vendor> vendorRepository
+        )
+        {
+            this._storeContext = storeContext;
+            this._categoryServiceSevenSpikes = categoryServiceSevenSpikes;
+            this._aclHelper = aclHelper;
+            this._workContext = workContext;
+            this._staticCacheManager = staticCacheManager;
+            this._catalogSettings = catalogSettings;
+            this._instantSearchSettings = instantSearchSettings;
+            this._manufacturerRepository = manufacturerRepository;
+            this._vendorRepository = vendorRepository;
+        }
 
-    public async Task<IViewComponentResult> InvokeAsync()
-    
+        public async Task<IViewComponentResult> InvokeAsync()
         {
             InstantSearchComponent instantSearchComponent = this;
             if (instantSearchComponent._catalogSettings.ProductSearchAutoCompleteEnabled || !instantSearchComponent._instantSearchSettings.Enable)
@@ -92,10 +89,10 @@ namespace Nop.Plugin.InstantSearch.Components
                 instantSearchModel1 = (InstantSearchModel)null;
             }
             return (IViewComponentResult) ((NopViewComponent) instantSearchComponent).View<InstantSearchModel>("~/Plugins/InstantSearch/Views/Components/InstantSearch/InstantSearch.cshtml", model);
-    }
+        }
 
-    private async Task<IList<CategorySimpleModel>> GetTopLevelCategoriesAsync()
-    {
+        private async Task<IList<CategorySimpleModel>> GetTopLevelCategoriesAsync()
+        {
             InstantSearchComponent instantSearchComponent = this;
             IStaticCacheManager istaticCacheManager = instantSearchComponent.StaticCacheManager;
             CacheKey cacheKey = CacheKeys.NOP_INSTANT_SEARCH_CATEGORIES_MODEL_KEY;
@@ -104,9 +101,9 @@ namespace Nop.Plugin.InstantSearch.Components
             Store currentStoreAsync = await instantSearchComponent._storeContext.GetCurrentStoreAsync();
             CacheKey cacheKey1 = istaticCacheManager.PrepareKeyForDefaultCache(cacheKey, new object[3]
             {
-        obj1,
-        obj2,
-        (object) ((BaseEntity) currentStoreAsync).Id
+                obj1,
+                obj2,
+                (object) ((BaseEntity) currentStoreAsync).Id
             });
             istaticCacheManager = (IStaticCacheManager)null;
             cacheKey = (CacheKey)null;
@@ -120,95 +117,78 @@ namespace Nop.Plugin.InstantSearch.Components
                     var topLevelCategories = categories.Select(category => new CategorySimpleModel
 
                     {
-                     Id = category.Id,
-                     Name = category.Name,
-                     IncludeInTopMenu = category.IncludeInTopMenu                     // Map other properties as needed
-                 })
-                 .ToList();
-
-                  return topLevelCategories;
+                        Id = category.Id,
+                        Name = category.Name,
+                        IncludeInTopMenu = category.IncludeInTopMenu                     // Map other properties as needed
+                    })
+                    .ToList();
+                    return topLevelCategories;
                 });
-        }
-      
-    
-    private async Task<IList<ManufacturerSimpleModel>> GetAllManufacturersAsync()
-    {
-      InstantSearchComponent instantSearchComponent = this;
-      IStaticCacheManager istaticCacheManager = instantSearchComponent.StaticCacheManager;
-      CacheKey cacheKey = CacheKeys.NOP_INSTANT_SEARCH_MANUFACTURERS_MODEL_KEY;
-      object obj1 = (object) ((BaseEntity) await instantSearchComponent._workContext.GetWorkingLanguageAsync()).Id;
-      object obj2 = (object) await instantSearchComponent._aclHelper.GetAllowedCustomerRolesIdsAsync();
-      Store currentStoreAsync = await instantSearchComponent._storeContext.GetCurrentStoreAsync();
-      CacheKey cacheKey1 = istaticCacheManager.PrepareKeyForDefaultCache(cacheKey, new object[3]
-      {
-        obj1,
-        obj2,
-        (object) ((BaseEntity) currentStoreAsync).Id
-      });
+            }
+     
+        private async Task<IList<ManufacturerSimpleModel>> GetAllManufacturersAsync()
+        {
+            InstantSearchComponent instantSearchComponent = this;
+            IStaticCacheManager istaticCacheManager = instantSearchComponent.StaticCacheManager;
+            CacheKey cacheKey = CacheKeys.NOP_INSTANT_SEARCH_MANUFACTURERS_MODEL_KEY;
+            object obj1 = (object) ((BaseEntity) await instantSearchComponent._workContext.GetWorkingLanguageAsync()).Id;
+            object obj2 = (object) await instantSearchComponent._aclHelper.GetAllowedCustomerRolesIdsAsync();
+            Store currentStoreAsync = await instantSearchComponent._storeContext.GetCurrentStoreAsync();
+            CacheKey cacheKey1 = istaticCacheManager.PrepareKeyForDefaultCache(cacheKey, new object[3]
+            {
+                obj1,
+                obj2,
+                (object) ((BaseEntity) currentStoreAsync).Id
+            });
             istaticCacheManager = (IStaticCacheManager)null;
             cacheKey = (CacheKey)null;
             obj1 = (object)null;
             obj2 = (object)null;
-
-
             return await instantSearchComponent._staticCacheManager.GetAsync<IList<ManufacturerSimpleModel>>(
-          cacheKey1, async () =>
-          {
-              IList<Manufacturer> manufacturers = _manufacturerRepository.Table.ToList();
-
-              IList<ManufacturerSimpleModel> simplemodel = manufacturers.Select(manufacturer =>
+            cacheKey1, async () =>
+            {
+                IList<Manufacturer> manufacturers = _manufacturerRepository.Table.ToList();
+                IList<ManufacturerSimpleModel> simplemodel = manufacturers.Select(manufacturer =>
             new ManufacturerSimpleModel
             {
                 Id= manufacturer.Id,
                 Name = manufacturer.Name,
             }).ToList();
-              
-              return simplemodel;
+                return simplemodel;
+            });
+        }
 
-              //return await instantSearchComponent.GetAllManufacturersAsync();
-          });
-
-
-         
-    }
-
-    private async Task<IList<VendorSimpleModel>> GetAllVendorsAsync()
-    {
-      InstantSearchComponent instantSearchComponent = this;
-      IStaticCacheManager istaticCacheManager = instantSearchComponent.StaticCacheManager;
-      CacheKey cacheKey = CacheKeys.NOP_INSTANT_SEARCH_VENDORS_MODEL_KEY;
-      object obj1 = (object) ((BaseEntity) await instantSearchComponent._workContext.GetWorkingLanguageAsync()).Id;
-      object obj2 = (object) await instantSearchComponent._aclHelper.GetAllowedCustomerRolesIdsAsync();
-      Store currentStoreAsync = await instantSearchComponent._storeContext.GetCurrentStoreAsync();
-      CacheKey cacheKey1 = istaticCacheManager.PrepareKeyForDefaultCache(cacheKey, new object[3]
-      {
-        obj1,
-        obj2,
-        (object) ((BaseEntity) currentStoreAsync).Id
-      });
+        private async Task<IList<VendorSimpleModel>> GetAllVendorsAsync()
+        {
+            InstantSearchComponent instantSearchComponent = this;
+            IStaticCacheManager istaticCacheManager = instantSearchComponent.StaticCacheManager;
+            CacheKey cacheKey = CacheKeys.NOP_INSTANT_SEARCH_VENDORS_MODEL_KEY;
+            object obj1 = (object) ((BaseEntity) await instantSearchComponent._workContext.GetWorkingLanguageAsync()).Id;
+            object obj2 = (object) await instantSearchComponent._aclHelper.GetAllowedCustomerRolesIdsAsync();
+            Store currentStoreAsync = await instantSearchComponent._storeContext.GetCurrentStoreAsync();
+            CacheKey cacheKey1 = istaticCacheManager.PrepareKeyForDefaultCache(cacheKey, new object[3]
+            {
+                obj1,
+                obj2,
+                (object) ((BaseEntity) currentStoreAsync).Id
+            });
             istaticCacheManager = (IStaticCacheManager)null;
             cacheKey = (CacheKey)null;
             obj1 = (object)null;
             obj2 = (object)null;
-            // ISSUE: reference to a compiler-generated method
             return await instantSearchComponent._staticCacheManager.GetAsync<IList<VendorSimpleModel>>(
-          cacheKey1, async () =>
-          {
-              IList<Vendor> vendors = _vendorRepository.Table.ToList();
+                cacheKey1, async () =>
+                {
+                    IList<Vendor> vendors = _vendorRepository.Table.ToList();
 
-              IList<VendorSimpleModel> simplemodel = vendors.Select(vendor =>
-            new VendorSimpleModel
-            {
-                Id = vendor.Id,
-                Name = vendor.Name,
-            }).ToList();
-
-              return simplemodel;
-
-              //return await instantSearchComponent.GetAllManufacturersAsync();
-          });
-
-
+                    IList<VendorSimpleModel> simplemodel = vendors.Select(vendor =>
+                new VendorSimpleModel
+                {
+                    Id = vendor.Id,
+                    Name = vendor.Name,
+                }).ToList();
+                return simplemodel;
+                });
         }
-  }
+    }
 }

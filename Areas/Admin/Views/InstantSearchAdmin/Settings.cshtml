@@ -9,7 +9,7 @@
 @model Nop.Plugin.InstantSearch.Areas.Admin.Models.InstantSearchSettingsModel
 
 @{
-    Layout = AdminViewLocations.AdminLayoutViewPath;
+    Layout = AdminViewLocations.ADMIN_LAYOUT_VIEW_PATH;
 
     NopHtml.SetActiveMenuItemSystemName("Nop.Plugin.InstantSearch.Admin.Submenus.Settings");
 }
@@ -182,6 +182,16 @@
                             <div class="col-md-9">
                                 <nop-editor asp-for="VisibleIndividuallyOnly" />
                                 <span asp-validation-for="VisibleIndividuallyOnly"></span>
+                            </div>
+                        </div>
+                        <div class="form-group row advanced-setting">
+                            <div class="col-md-3">
+                                <nop-override-store-checkbox asp-for="ShowOutOfStockAtTheEnd_OverrideForStore" asp-input="ShowOutOfStockAtTheEnd" asp-store-scope="@Model.ActiveStoreScopeConfiguration" />
+                                <nop-label asp-for="ShowOutOfStockAtTheEnd" />
+                            </div>
+                            <div class="col-md-9">
+                                <nop-editor asp-for="ShowOutOfStockAtTheEnd" />
+                                <span asp-validation-for="ShowOutOfStockAtTheEnd"></span>
                             </div>
                         </div>
                     </div>

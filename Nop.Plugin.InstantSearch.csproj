@@ -29,9 +29,6 @@
     <None Update="Areas\Admin\Content\Scripts\Scheduling.min.js">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="Areas\Admin\Views\AdminNavigation\AdminNavigation.cshtml"> 
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
     <None Update="Areas\Admin\Content\Scripts\admin.core.min.js">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -50,19 +47,7 @@
     <None Update="Areas\Admin\Views\NopCoreAdmin\Warnings.cshtml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="Areas\Admin\Views\Shared\ManageResources.cshtml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
     <None Update="Areas\Admin\Views\Shared\_AdminLayout7Spikes.cshtml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Update="Areas\Admin\Views\Shared\_AdminPopupLayout7Spikes.cshtml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Update="Areas\Admin\Views\Shared\_CopyEntity.cshtml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Update="Areas\Admin\Views\Shared\_ResetDefaultSettings.cshtml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Update="Areas\Admin\Views\_ViewImports.cshtml">
@@ -77,16 +62,7 @@
     <None Update="plugin.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="Resources\ConditionsResources.en-us.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Update="Resources\MappingsResources.en-us.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
     <None Update="Resources\Resources.en-us.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Update="Resources\SchedulingResources.en-us.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Update="Scripts\InstantSearch.min.js">

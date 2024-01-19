@@ -44,8 +44,7 @@ namespace Nop.Plugin.InstantSearch.Factories
         private readonly MediaSettings _mediaSettings;
         private readonly OrderSettings _orderSettings;
 
-
-        public InstantSearchProductModelFactory(CaptchaSettings captchaSettings,
+        public InstantSearchProductModelFactory(
             CatalogSettings catalogSettings,
             ICurrencyService currencyService,
             ICustomerService customerService,
@@ -139,7 +138,6 @@ namespace Nop.Plugin.InstantSearch.Factories
 
                 models.Add(model);
             }
-
             return models;
         }
         protected virtual async Task<ProductOverviewModel.ProductPriceModel> PrepareProductOverviewPriceModelAsync(Product product, bool forceRedirectionAfterAddingToCart = false)
@@ -156,9 +154,6 @@ namespace Nop.Plugin.InstantSearch.Factories
             return priceModel;
 
         }
-
-
-
 
         protected virtual async Task PrepareSimpleProductOverviewPriceModelAsync(Product product, ProductOverviewModel.ProductPriceModel priceModel)
         {
@@ -424,7 +419,6 @@ namespace Nop.Plugin.InstantSearch.Factories
             return cachedPictures;
         }
 
-
         public virtual async Task<ProductSpecificationModel> PrepareProductSpecificationModelAsync(Product product)
         {
             if (product == null)
@@ -452,8 +446,6 @@ namespace Nop.Plugin.InstantSearch.Factories
 
             return model;
         }
-
-
 
         protected virtual async Task<ProductReviewOverviewModel> PrepareProductReviewOverviewModelAsync(Product product)
         {
@@ -494,7 +486,6 @@ namespace Nop.Plugin.InstantSearch.Factories
             return productReview;
         }
 
-
         protected virtual async Task<IList<ProductSpecificationAttributeModel>> PrepareProductSpecificationAttributeModelAsync(Product product, SpecificationAttributeGroup group)
         {
             if (product == null)
@@ -534,10 +525,8 @@ namespace Nop.Plugin.InstantSearch.Factories
                         _ => null
                     }
                 };
-
                 model.Values.Add(value);
             }
-
             return result;
         }
     }

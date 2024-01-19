@@ -4,12 +4,12 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Nop.Plugin.InstantSearch.Areas.Admin.Models
 {
-  public class StoreMappingModel
-  {
+    public class StoreMappingModel
+    {
     public StoreMappingModel()
     {
-      this.SelectedStoreIds = (IList<int>) new List<int>();
-      this.AvailableStores = (IList<SelectListItem>) new List<SelectListItem>();
+        this.SelectedStoreIds = (IList<int>) new List<int>();
+        this.AvailableStores = (IList<SelectListItem>) new List<SelectListItem>();
     }
 
     [NopResourceDisplayName("Admin.Catalog.Categories.Fields.LimitedToStores")]
@@ -17,5 +17,5 @@ namespace Nop.Plugin.InstantSearch.Areas.Admin.Models
     public IList<int> SelectedStoreIds { get; set; }
 
     public IList<SelectListItem> AvailableStores { get; set; }
-  }
+    }
 }

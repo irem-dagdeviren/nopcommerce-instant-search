@@ -53,9 +53,8 @@ namespace Nop.Plugin.InstantSearch.Areas.Admin.Controllers
             this._workContext = workContext;
         }
 
-
         public async Task<ActionResult> InstantSearchSettings()
-    {
+        {
             InstantSearchAdminController searchAdminController = this;
             int storeScope = await searchAdminController.StoreContext.GetActiveStoreScopeConfigurationAsync();
             DuzeySearchSettings instantSearchSettings = await searchAdminController._settingService.LoadSettingAsync<DuzeySearchSettings>(storeScope);
@@ -127,6 +126,11 @@ namespace Nop.Plugin.InstantSearch.Areas.Admin.Controllers
                 searchSettingsModel.NumberOfVisibleProducts_OverrideForStore = await scopeSettingsHelper11.SettingExistsAsync<int>(expression11);
                 searchSettingsModel = (InstantSearchSettingsModel)null;
                 searchSettingsModel = model;
+                StoreScopeSettingsHelper<DuzeySearchSettings> scopeSettingsHelper13 = storeScopeSetting;
+                Expression<Func<DuzeySearchSettings, bool>> expression13 = (Expression<Func<DuzeySearchSettings, bool>>)(x => x.ShowOutOfStockAtTheEnd);
+                searchSettingsModel.ShowOutOfStockAtTheEnd_OverrideForStore = await scopeSettingsHelper11.SettingExistsAsync<bool>(expression13);
+                searchSettingsModel = (InstantSearchSettingsModel)null;
+                searchSettingsModel = model;
                 StoreScopeSettingsHelper<CatalogSettings> scopeSettingsHelper12 = catalogStoreScopeSetting;
 
                 ParameterExpression parameterExpression = Expression.Parameter(typeof(CatalogSettings), "ProductSearchTermMinimumLength");
@@ -135,12 +139,11 @@ namespace Nop.Plugin.InstantSearch.Areas.Admin.Controllers
                     typeof(CatalogSettings).GetProperty("ProductSearchTermMinimumLength")),
                     parameterExpression
                 );
-
                 searchSettingsModel.MinKeywordLength_OverrideForStore = await scopeSettingsHelper12.SettingExistsAsync<int>(expression12);
                 searchSettingsModel = (InstantSearchSettingsModel)null;
                 storeScopeSetting = (StoreScopeSettingsHelper<DuzeySearchSettings>)null;
                 catalogStoreScopeSetting = (StoreScopeSettingsHelper<CatalogSettings>)null;
-      }
+            }
             model.IsTrialVersion = false;
             ActionResult actionResult = (ActionResult)((Controller)searchAdminController).View("~/Plugins/InstantSearch/Areas/Admin/Views/InstantSearchAdmin/Settings.cshtml", (object)model);
             instantSearchSettings = (DuzeySearchSettings)null;
@@ -151,8 +154,8 @@ namespace Nop.Plugin.InstantSearch.Areas.Admin.Controllers
 
         [HttpPost]
         public async Task<ActionResult> InstantSearchSettings(
-      InstantSearchSettingsModel model,
-      bool returnPartialView)
+        InstantSearchSettingsModel model,
+        bool returnPartialView)
         {
             InstantSearchAdminController searchAdminController = this;
             int storeScope = await searchAdminController.StoreContext.GetActiveStoreScopeConfigurationAsync();
@@ -179,9 +182,7 @@ namespace Nop.Plugin.InstantSearch.Areas.Admin.Controllers
             }
             CatalogSettings catalogSettings = await searchAdminController._settingService.LoadSettingAsync<CatalogSettings>(storeScope);
             catalogSettings.ProductSearchTermMinimumLength = model.MinKeywordLength;
-
             ParameterExpression parameterExpression1 = Expression.Parameter(typeof(CatalogSettings), "CatalogSettings");
-
             await new StoreScopeSettingsHelper<CatalogSettings>(
                 catalogSettings, storeScope, searchAdminController._settingService).SaveStoreSettingAsync<int>((
                 model.MinKeywordLength_OverrideForStore ? 1 : 0) != 0,
@@ -202,6 +203,7 @@ namespace Nop.Plugin.InstantSearch.Areas.Admin.Controllers
             await storeScopeSetting.SaveStoreSettingAsync<bool>((model.SearchProductTags_OverrideForStore ? 1 : 0) != 0, (Expression<Func<DuzeySearchSettings, bool>>)(x => x.SearchProductTags));
             await storeScopeSetting.SaveStoreSettingAsync<bool>((model.VisibleIndividuallyOnly_OverrideForStore ? 1 : 0) != 0, (Expression<Func<DuzeySearchSettings, bool>>)(x => x.VisibleIndividuallyOnly));
             await storeScopeSetting.SaveStoreSettingAsync<int>((model.NumberOfVisibleProducts_OverrideForStore ? 1 : 0) != 0, (Expression<Func<DuzeySearchSettings, int>>)(x => x.NumberOfVisibleProducts));
+            await storeScopeSetting.SaveStoreSettingAsync<bool>((model.ShowOutOfStockAtTheEnd_OverrideForStore ? 1 : 0) != 0, (Expression<Func<DuzeySearchSettings, bool>>)(x => x.ShowOutOfStockAtTheEnd));
             await searchAdminController._settingService.ClearCacheAsync();
             ICustomerActivityService icustomerActivityService = searchAdminController._customerActivityService;
             ActivityLog activityLog = await icustomerActivityService.InsertActivityAsync("EditInstantSearchSettings", await searchAdminController._localizationService.GetResourceAsync("ActivityLog.EditInstantSearchSettings"), (BaseEntity)null);
@@ -215,31 +217,30 @@ namespace Nop.Plugin.InstantSearch.Areas.Admin.Controllers
         }
 
         private async Task PopulateAvailableProductSortOptionsAsync(InstantSearchSettingsModel model)
-    {
-      foreach (ProductSortingEnum enumValue in Enum.GetValues(typeof (ProductSortingEnum)))
-      {
-        string localizedEnumAsync = await this._localizationService.GetLocalizedEnumAsync<ProductSortingEnum>(enumValue, new int?());
-        model.AvailableProductSortOptions.Add(new SelectListItem()
         {
-          Text = localizedEnumAsync,
-          Value = ((int)enumValue).ToString(),
-          Selected = enumValue.Equals(model.DefaultProductSortOption)
+            foreach (ProductSortingEnum enumValue in Enum.GetValues(typeof (ProductSortingEnum)))
+            {
+                string localizedEnumAsync = await this._localizationService.GetLocalizedEnumAsync<ProductSortingEnum>(enumValue, new int?());
+                model.AvailableProductSortOptions.Add(new SelectListItem()
+                {
+                  Text = localizedEnumAsync,
+                  Value = ((int)enumValue).ToString(),
+                  Selected = enumValue.Equals(model.DefaultProductSortOption)
+                });
+            }
+        }
 
-        });
-      }
-    }
-
-    private async Task PopulateAvailableSearchOptionsAsync(InstantSearchSettingsModel model)
-    {
-      foreach (Domain.Enums.SearchOption enumValue in Enum.GetValues(typeof (Domain.Enums.SearchOption)))
-      {
-        string localizedEnumAsync = await this._localizationService.GetLocalizedEnumAsync<Domain.Enums.SearchOption>(enumValue, new int?());
-        model.AvailableSearchOptions.Add(new SelectListItem()
+        private async Task PopulateAvailableSearchOptionsAsync(InstantSearchSettingsModel model)
         {
-          Text = localizedEnumAsync,
-          Value = ((int) enumValue).ToString()
-        });
-      }
+            foreach (Domain.Enums.SearchOption enumValue in Enum.GetValues(typeof (Domain.Enums.SearchOption)))
+            {
+                string localizedEnumAsync = await this._localizationService.GetLocalizedEnumAsync<Domain.Enums.SearchOption>(enumValue, new int?());
+                model.AvailableSearchOptions.Add(new SelectListItem()
+                {
+                  Text = localizedEnumAsync,
+                  Value = ((int) enumValue).ToString()
+                });
+            }
+        }
     }
-  }
 }

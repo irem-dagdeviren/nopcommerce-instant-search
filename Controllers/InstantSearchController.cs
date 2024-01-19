@@ -55,6 +55,23 @@ namespace Nop.Plugin.InstantSearch.Controllers
         {
             InstantSearchController searchController = this;
             InstantSearchDropdownModel model = await searchController.SearchProductsAsync(q, categoryId, manufacturerId, vendorId);
+
+            if(_instantSearchSettings.ShowOutOfStockAtTheEnd == true)
+            {
+                var nullPriceList = new List<ProductOverviewModel>();
+                var nonNullPriceList = new List<ProductOverviewModel>();
+                foreach( var item in model.Products )
+                {
+                    if (item.ProductPrice.PriceValue == Decimal.Zero)
+                    { 
+                        nullPriceList.Add(item);
+                        continue;
+                    }
+                    nonNullPriceList.Add(item);
+                }
+                model.Products = nonNullPriceList.Concat(nullPriceList).ToList();
+                
+            }
             InstantSearchDropdownModel searchDropdownModel = model;
             searchDropdownModel.ShowAllButtonHtml = await ((InstantSearchController)searchController).RenderPartialViewToStringAsync("~/Plugins/InstantSearch/Views/InstantSearch/_ShowAllResults.cshtml", (object)model.TotalProducts);
             searchDropdownModel = (InstantSearchDropdownModel)null;
