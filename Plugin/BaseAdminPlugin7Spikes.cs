@@ -5,11 +5,7 @@ using Nop.Core.Infrastructure;
 using Nop.Services.Configuration;
 using Nop.Services.Localization;
 using Nop.Services.Plugins;
-using Nop.Web.Areas.Admin.Models.Common;
 using Nop.Web.Framework.Menu;
-using Nop.Web.Framework.Security;
-using Nop.Plugin.InstantSearch.Areas.Admin.Models;
-
 
 
 #nullable enable
@@ -41,37 +37,6 @@ namespace Nop.Plugin.InstantSearch.Plugin
         }
 
         public abstract override string GetConfigurationPageUrl();
-
-        public virtual async Task<WarningsModel> WarningsAsync()
-        {
-            BaseAdminPlugin7Spikes adminPlugin7Spikes = this;
-            WarningsModel warningsModel1 = new WarningsModel();
-            WarningsModel warningsModel2 = warningsModel1;
-            warningsModel2.PluginName = await adminPlugin7Spikes.LocalizationService.GetResourceAsync(adminPlugin7Spikes._pluginAdminMenuResourceKey);
-            warningsModel2 = (WarningsModel) null;
-            string path1 = adminPlugin7Spikes.NopFileProvider.MapPath(string.Format("~/Plugins/{0}/Resources/", (object) adminPlugin7Spikes._pluginFolderName));
-            if (!Directory.Exists(path1))
-            {
-                warningsModel1.Warnings.Add(new SystemWarningModel()
-            {
-                Level = (SystemWarningLevel) 2,
-                Text = string.Format("The resource directory does not exists! - {0}", (object) path1)
-            });
-            }
-            else
-            {
-                string path2 = adminPlugin7Spikes.NopFileProvider.MapPath(string.Format("~/Plugins/{0}/Resources/Resources.en-us.xml", (object) adminPlugin7Spikes._pluginFolderName));
-                if (File.Exists(path2) && !FilePermissionHelper.CheckPermissions(adminPlugin7Spikes.NopFileProvider, path2, true, false, false, false))
-                    warningsModel1.Warnings.Add(new SystemWarningModel()
-                    {
-                        Level = (SystemWarningLevel) 2,
-                        Text = string.Format("The file {0} does not have the correct permissions! You need to add read permissions to the file !", (object) path2)
-                    });
-            }
-            WarningsModel warningsModel = warningsModel1;
-            warningsModel1 = (WarningsModel) null;
-            return warningsModel;
-        }
 
         private async Task<string> GetResourceAsync(string resourceName)
         {

@@ -30,12 +30,12 @@ namespace Nop.Plugin.InstantSearch.MVCExtensions
         {
             string str = string.Empty;
             if (isTrialVersion)
-            str = await HtmlExtensions.RenderHtmlContentAsync(htmlHelper.Partial("~/Plugins/InstantSearch/Areas/Admin/Views/Shared/_TrialAdmin.cshtml", (object) new TrialData()
-            {
-                PluginName = pluginName,
-                PluginUrlInStore = pluginUrlInStore,
-                AdditionalMessage = additionalMessage
-            }));
+                str = await HtmlExtensions.RenderHtmlContentAsync(htmlHelper.Partial("~/Plugins/InstantSearch/Areas/Admin/Views/Shared/_TrialAdmin.cshtml", (object) new TrialData()
+                {
+                    PluginName = pluginName,
+                    PluginUrlInStore = pluginUrlInStore,
+                    AdditionalMessage = additionalMessage
+                }));
             return (IHtmlContent) new HtmlString(str);
         }
     }

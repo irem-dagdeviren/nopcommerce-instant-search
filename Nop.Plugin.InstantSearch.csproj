@@ -14,21 +14,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Update="Areas\Admin\Content\Scripts\admin.navigation.min.js">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Update="Areas\Admin\Content\Scripts\admin.search.min.js">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Update="Areas\Admin\Content\Scripts\Conditions.min.js">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Update="Areas\Admin\Content\Scripts\custom.presets.min.js">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Update="Areas\Admin\Content\Scripts\Scheduling.min.js">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
     <None Update="Areas\Admin\Content\Scripts\admin.core.min.js">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -36,15 +21,6 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Update="Areas\Admin\Views\InstantSearchAdmin\Settings.cshtml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Update="Areas\Admin\Views\NopCoreAdmin\AccessControl.cshtml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Update="Areas\Admin\Views\NopCoreAdmin\Information.cshtml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Update="Areas\Admin\Views\NopCoreAdmin\Warnings.cshtml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Update="Areas\Admin\Views\Shared\_AdminLayout7Spikes.cshtml">
@@ -90,9 +66,6 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Update="Settings.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Update="Styles\sidebar.navigation.css">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Update="SupportedWidgetZones.xml">

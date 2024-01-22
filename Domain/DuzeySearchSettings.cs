@@ -29,5 +29,5 @@ namespace Nop.Plugin.InstantSearch.Domain
         public bool ShowOutOfStockAtTheEnd {  get; set; }
 
 
-  }
+    }
 }

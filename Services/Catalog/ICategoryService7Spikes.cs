@@ -9,8 +9,6 @@ namespace Nop.Plugin.InstantSearch.Services.Catalog
             bool includeSubCategoriesFromAllLevels = false,
             bool showHidden = false);
 
-        Task<List<int>> GetCategoryIdsByParentCategoryAsync(int categoryId, bool showHidden = false);
-
         Task<IList<Category>> GetAvailableCategoriesAsync(bool showHidden = false);
     }
 }

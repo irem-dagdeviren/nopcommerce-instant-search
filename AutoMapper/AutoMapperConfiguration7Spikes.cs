@@ -42,12 +42,5 @@ namespace Nop.Plugin.InstantSearch.AutoMapper
         }
 
         public static TDestination MapTo<TSource, TDestination>(this TSource source) => AutoMapperConfiguration7Spikes.Mapper.Map<TSource, TDestination>(source);
-
-        public static TDestination MapTo<TSource, TDestination>(
-            this TSource source,
-            TDestination destination)
-        {
-            return AutoMapperConfiguration7Spikes.Mapper.Map<TSource, TDestination>(source, destination);
-        }
     }
 }

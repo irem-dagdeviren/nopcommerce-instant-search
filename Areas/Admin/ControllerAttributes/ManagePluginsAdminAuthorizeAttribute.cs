@@ -14,8 +14,8 @@ namespace Nop.Plugin.InstantSearch.Areas.Admin.ControllerAttributes
         {
             this.Arguments = new object[2]
             {
-        (object) permissionSystemName,
-        (object) ignore
+                (object) permissionSystemName,
+                (object) ignore
             };
         }
 

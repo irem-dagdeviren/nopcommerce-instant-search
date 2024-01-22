@@ -203,7 +203,7 @@ namespace Nop.Plugin.InstantSearch.Plugin
                 {
                     Title = accessControlTitle,
                     SystemName = "Plugins Access Control",
-                    Url = this.WebHelper.GetStoreLocation(new bool?()) + "Admin/NopCoreAdmin/PluginsAccessControl",
+                    Url = this.WebHelper.GetStoreLocation(new bool?()) + "Admin/NopCoreAdmin/DuzeySearchPluginsAccessControl",
                     Visible = true,
                     IconClass = "fa icon-plugins"
                 };
@@ -211,7 +211,7 @@ namespace Nop.Plugin.InstantSearch.Plugin
                 {
                     Title = warningsTitle,
                     SystemName = "InstantSearch Warnings",
-                    Url = this.WebHelper.GetStoreLocation(new bool?()) + "Admin/NopCoreAdmin/Warnings",
+                    Url = this.WebHelper.GetStoreLocation(new bool?()) + "Admin/NopCoreAdmin/DuzeySearchWarnings",
                     Visible = true,
                     IconClass = "fa fa-exclamation-circle"
                 };
@@ -219,7 +219,7 @@ namespace Nop.Plugin.InstantSearch.Plugin
                 {
                     Title = str,
                     SystemName = "InstantSearch Information",
-                    Url = this.WebHelper.GetStoreLocation(new bool?()) + "Admin/NopCoreAdmin/Information",
+                    Url = this.WebHelper.GetStoreLocation(new bool?()) + "Admin/NopCoreAdmin/DuzeySearchInformation",
                     Visible = true,
                     IconClass = "fa fa-cube"
                 };

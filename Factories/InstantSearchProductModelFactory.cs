@@ -4,7 +4,6 @@ using Nop.Core.Caching;
 using Nop.Core.Domain.Catalog;
 using Nop.Core.Domain.Media;
 using Nop.Core.Domain.Orders;
-using Nop.Core.Domain.Security;
 using Nop.Services.Catalog;
 using Nop.Services.Customers;
 using Nop.Services.Directory;
@@ -140,6 +139,7 @@ namespace Nop.Plugin.InstantSearch.Factories
             }
             return models;
         }
+
         protected virtual async Task<ProductOverviewModel.ProductPriceModel> PrepareProductOverviewPriceModelAsync(Product product, bool forceRedirectionAfterAddingToCart = false)
         {
             if (product == null)
@@ -152,7 +152,6 @@ namespace Nop.Plugin.InstantSearch.Factories
 
             await PrepareSimpleProductOverviewPriceModelAsync(product, priceModel);
             return priceModel;
-
         }
 
         protected virtual async Task PrepareSimpleProductOverviewPriceModelAsync(Product product, ProductOverviewModel.ProductPriceModel priceModel)

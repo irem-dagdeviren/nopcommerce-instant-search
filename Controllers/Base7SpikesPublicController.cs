@@ -1,9 +1,5 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using Nop.Core.Caching;
 using Nop.Core.Infrastructure;
-using Nop.Services.Common;
-using Nop.Services.Customers;
-using Nop.Services.Localization;
 using Nop.Services.Seo;
 using Nop.Web.Controllers;
 

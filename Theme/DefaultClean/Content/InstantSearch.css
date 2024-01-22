@@ -62,12 +62,13 @@ input.search-box-text {
 }
 
   .instantSearch.resize {
-    width: 294px !important;
+    width: 100%;
   }
 
   .instantSearch .k-list-container {
-    width: calc(100% - 47px);
+    width: 100%;
     position: static !important;
+    s
   }
 
   .instantSearch .k-list-scroller {
@@ -143,7 +144,7 @@ input.search-box-text {
     }
 
     input.search-box-text.narrow.instant-search-busy {
-      background-position: 154px center;
+      background-position: calc(100% - 20px);
     }
 
   .search-box-select {
@@ -157,7 +158,7 @@ input.search-box-text {
   }
 
     .instantSearch.resize {
-      width: 298px !important;
+      width: 100%;
     }
 }
 

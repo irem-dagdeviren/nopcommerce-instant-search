@@ -5,8 +5,6 @@ namespace Nop.Plugin.InstantSearch.ViewLocations
 {
     public class ViewLocationsManager : IViewLocationsManager, IViewLocationExpander
     {
-        private const string THEME_KEY = "nop.themename";
-
         public IList<DuplicateControllerInfo> DuplicateControllerInfos { get; set; }
 
         private List<string> BeforeDefaultNopViewLocationFormats { get; set; }
@@ -29,35 +27,9 @@ namespace Nop.Plugin.InstantSearch.ViewLocations
         public void AddViewLocationFormats(IList<string> viewLocationFormats, bool addFirst)
         {
             if (addFirst)
-            this.BeforeDefaultNopViewLocationFormats.InsertRange(0, (IEnumerable<string>) viewLocationFormats);
+                this.BeforeDefaultNopViewLocationFormats.InsertRange(0, (IEnumerable<string>) viewLocationFormats);
             else
-            this.AfterDefaultNopViewLocationFormats.AddRange((IEnumerable<string>) viewLocationFormats);
-        }
-
-        public void RemoveViewLocationFormats(IList<string> viewLocationFormats)
-        {
-            this.BeforeDefaultNopViewLocationFormats.RemoveAll(new Predicate<string>(((ICollection<string>) viewLocationFormats).Contains));
-            this.AfterDefaultNopViewLocationFormats.RemoveAll(new Predicate<string>(((ICollection<string>) viewLocationFormats).Contains));
-        }
-
-        public bool ContainsViewLocationFormat(string viewLocationFormat) => this.BeforeDefaultNopViewLocationFormats.Contains(viewLocationFormat) || this.AfterDefaultNopViewLocationFormats.Contains(viewLocationFormat);
-
-        public void AddDuplicateControllers(
-            IList<DuplicateControllerInfo> duplicateControllerInfos)
-        {
-            foreach (DuplicateControllerInfo duplicateControllerInfo in (IEnumerable<DuplicateControllerInfo>) duplicateControllerInfos)
-            {
-                if (this.DuplicateControllerInfos.Contains(duplicateControllerInfo))
-                    throw new ArgumentException(string.Format("Duplicate Controller with DuplicateControllerName:{0} is already added", (object) duplicateControllerInfo.DuplicateControllerName));
-                this.DuplicateControllerInfos.Add(duplicateControllerInfo);
-            }
-        }
-
-        public void RemoveDuplicateControllers(
-            IList<DuplicateControllerInfo> duplicateControllerInfos)
-        {
-            foreach (DuplicateControllerInfo duplicateControllerInfo in (IEnumerable<DuplicateControllerInfo>) duplicateControllerInfos)
-            this.DuplicateControllerInfos.Remove(duplicateControllerInfo);
+                this.AfterDefaultNopViewLocationFormats.AddRange((IEnumerable<string>) viewLocationFormats);
         }
 
         public IEnumerable<string> ExpandViewLocations(
@@ -102,18 +74,10 @@ namespace Nop.Plugin.InstantSearch.ViewLocations
         public void AddAdminViewLocationFormats(IList<string> adminViewLocationFormats, bool addFirst)
         {
             if (addFirst)
-            this.BeforeDefaultNopAdminViewLocationFormats.InsertRange(0, (IEnumerable<string>) adminViewLocationFormats);
+                this.BeforeDefaultNopAdminViewLocationFormats.InsertRange(0, (IEnumerable<string>) adminViewLocationFormats);
             else
-            this.AfterDefaultNopAdminViewLocationFormats.AddRange((IEnumerable<string>) adminViewLocationFormats);
+                this.AfterDefaultNopAdminViewLocationFormats.AddRange((IEnumerable<string>) adminViewLocationFormats);
         }
-
-        public void RemoveAdminViewLocationFormats(IList<string> adminViewLocationFormats)
-        {
-            this.BeforeDefaultNopAdminViewLocationFormats.RemoveAll(new Predicate<string>(((ICollection<string>) adminViewLocationFormats).Contains));
-            this.AfterDefaultNopAdminViewLocationFormats.RemoveAll(new Predicate<string>(((ICollection<string>) adminViewLocationFormats).Contains));
-        }
-
-        public bool ContainsAdminViewLocationFormat(string adminViewLocationFormat) => this.BeforeDefaultNopAdminViewLocationFormats.Contains(adminViewLocationFormat) || this.AfterDefaultNopAdminViewLocationFormats.Contains(adminViewLocationFormat);
 
         public void PopulateValues(ViewLocationExpanderContext context)
         {
