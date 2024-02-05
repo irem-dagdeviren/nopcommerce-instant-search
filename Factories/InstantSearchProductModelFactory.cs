@@ -151,6 +151,8 @@ namespace Nop.Plugin.InstantSearch.Factories
             };
 
             await PrepareSimpleProductOverviewPriceModelAsync(product, priceModel);
+            if (priceModel.PriceValue == Decimal.Zero)
+                priceModel.Price = await _localizationService.GetResourceAsync("InstantSearch.Public.OutOfStock");
             return priceModel;
         }
 

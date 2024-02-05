@@ -56,6 +56,7 @@ namespace Nop.Plugin.InstantSearch.Controllers
             InstantSearchController searchController = this;
             InstantSearchDropdownModel model = await searchController.SearchProductsAsync(q, categoryId, manufacturerId, vendorId);
 
+            // manipulates indexes of model.products list to show out of stock product at the end. 
             if(_instantSearchSettings.ShowOutOfStockAtTheEnd == true)
             {
                 var nullPriceList = new List<ProductOverviewModel>();

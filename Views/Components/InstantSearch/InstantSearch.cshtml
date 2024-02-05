@@ -103,10 +103,7 @@ else if (Model.Vendors.Count > 0)
            <div class="price" >
             # var price = "";
             if (data.ProductPrice.Price) {
-                price = data.ProductPrice.Price;
-                    if (price == "₺0,00") {
-                        price = "@T("plugins.widgets.oos.outofstock")";
-                }
+                price = data.ProductPrice.Price;                   
             }
             # #= price #
         </div>
