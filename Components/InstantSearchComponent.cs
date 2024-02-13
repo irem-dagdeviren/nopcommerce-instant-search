@@ -13,6 +13,7 @@ using Nop.Plugin.InstantSearch.Services.Catalog;
 using Nop.Plugin.InstantSearch.Services.Helpers;
 using Nop.Data;
 using Nop.Core.Domain.Vendors;
+using Microsoft.AspNetCore.Http;
 
 namespace Nop.Plugin.InstantSearch.Components
 {
@@ -88,7 +89,34 @@ namespace Nop.Plugin.InstantSearch.Components
                 instantSearchModel1.Vendors = await instantSearchComponent.GetAllVendorsAsync();
                 instantSearchModel1 = (InstantSearchModel)null;
             }
-            return (IViewComponentResult) ((NopViewComponent) instantSearchComponent).View<InstantSearchModel>("~/Plugins/InstantSearch/Views/Components/InstantSearch/InstantSearch.cshtml", model);
+            bool isMobileView = IsMobileView(HttpContext);
+
+            // Choose the appropriate view based on the mobile status
+            string viewPath = isMobileView
+                ? "~/Plugins/InstantSearch/Views/Components/InstantSearch/InstantSearchMobile.cshtml"
+                : "~/Plugins/InstantSearch/Views/Components/InstantSearch/InstantSearch.cshtml";
+
+            // Return the corresponding view
+            return (IViewComponentResult)((NopViewComponent)instantSearchComponent).View(viewPath, model);
+        }
+
+        private bool IsMobileView(HttpContext context)
+        {
+            // Check if the "viewportWidth" cookie exists
+            if (context.Request.Cookies.ContainsKey("viewportWidth"))
+            {
+                // Get the viewport width from the cookie
+                var viewportWidth = int.Parse(context.Request.Cookies["viewportWidth"]);
+
+                // Assume a threshold width for mobile view
+                int thresholdWidthForMobileView = 1025; // Example threshold, adjust as needed
+
+                // Return true if viewport width is less than the threshold, indicating a mobile view
+                return viewportWidth < thresholdWidthForMobileView;
+            }
+
+            // Default to non-mobile view if the "viewportWidth" cookie is not available
+            return false;
         }
 
         private async Task<IList<CategorySimpleModel>> GetTopLevelCategoriesAsync()

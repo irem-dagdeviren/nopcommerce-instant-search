@@ -44,6 +44,9 @@
     <None Update="Scripts\InstantSearch.min.js">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Update="Scripts\InstantSearchMobile.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="Scripts\lib\kendo\2020.1.406\js\kendo.all.min.js">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -92,6 +95,10 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Update="Views\Components\InstantSearch\InstantSearch.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Views\Components\InstantSearch\InstantSearchMobile.cshtml">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Update="Views\InstantSearch\_ShowAllResults.cshtml">

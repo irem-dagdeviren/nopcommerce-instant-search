@@ -36,7 +36,7 @@
     <link rel="stylesheet" href="@instantSearchRtlCssFilePath" />
 }
 
-<script src="~/Plugins/InstantSearch/Scripts/InstantSearch.min.js" asp-location="Footer"></script>
+<script src="~/Plugins/InstantSearch/Scripts/InstantSearchMobile.js" asp-location="Footer"></script>
 
 
 @if (Model.TopLevelCategories.Count > 0)
@@ -88,28 +88,87 @@ else if (Model.Vendors.Count > 0)
     ${ data.DefaultPictureUrl } - contains the Url of the default product picture
     ${ data.ProductPrice } - contains the price of the product
 *@
-<script id="instantSearchItemTemplate" type="text/x-kendo-template" asp-location="Footer">
-    <div class="instant-search-item" data-url="${ data.CustomProperties.Url }">
-        <a class="iOS-temp" href="${ data.CustomProperties.Url }">
-            <div class="img-block">
-                <img src="${ data.PictureModels[0].ImageUrl }" alt="${ data.Name }" title="${ data.Name }" style="border: none">
-            </div>
-            <div class="detail">
-                <div class="title">${ data.Name } </div>
-    @if (Model.ShowSku)
-    {
-                   <div class="sku" ># var sku = ""; if (data.Sku != null) { sku = "@T("Products.Sku"): " + data.Sku } # #= sku #</div>
+
+<script id="instantSearchItemTemplate">
+
+    function createInstantSearchItem(data, showSku) {
+        var instantSearchItemDiv = document.createElement("div");
+        instantSearchItemDiv.classList.add("instant-search-item");
+        instantSearchItemDiv.dataset.url = data.CustomProperties.Url;
+
+        var iOSLink = document.createElement("a");
+        iOSLink.classList.add("iOS-temp");
+        iOSLink.href = data.CustomProperties.Url;
+
+        var imgBlockDiv = document.createElement("div");
+        imgBlockDiv.classList.add("img-block");
+
+        var imgElement = document.createElement("img");
+        imgElement.src = data.PictureModels[0].ImageUrl;
+        imgElement.alt = data.Name;
+        imgElement.title = data.Name;
+        imgElement.style.border = "none";
+
+        imgBlockDiv.appendChild(imgElement);
+
+        var detailDiv = document.createElement("div");
+        detailDiv.classList.add("detail");
+
+        var titleDiv = document.createElement("div");
+        titleDiv.classList.add("title");
+        titleDiv.textContent = data.Name;
+
+        detailDiv.appendChild(titleDiv);
+
+        if (showSku) {
+            var skuDiv = document.createElement("div");
+            skuDiv.classList.add("sku");
+            var sku = "Ürün Kodu: " + (data.Sku != null ? data.Sku : "");
+            skuDiv.textContent = sku;
+            detailDiv.appendChild(skuDiv);
+
+            var priceDiv = document.createElement("div");
+            priceDiv.classList.add("price");
+            var price = data.ProductPrice.Price ? data.ProductPrice.Price : "";
+            priceDiv.textContent = price;
+            detailDiv.appendChild(priceDiv);
+        }
+
+        iOSLink.appendChild(imgBlockDiv);
+        iOSLink.appendChild(detailDiv);
+        instantSearchItemDiv.appendChild(iOSLink);
+
+        return instantSearchItemDiv;
     }
-           <div class="price" >
-            # var price = "";
-            if (data.ProductPrice.Price) {
-                price = data.ProductPrice.Price;
-            }
-            # #= price #
-        </div>
-            </div>
-        </a>
-    </div>
+
+    // Örnek kullanım
+    var data = {
+        CustomProperties: {
+            Url: "/example-url"
+        },
+        PictureModels: [{
+            ImageUrl: "https://example.com/image.jpg"
+        }],
+        Name: "Example Product",
+        Sku: "12345",
+        ProductPrice: {
+            Price: "$10.00"
+        }
+    };
+
+    var isMobileView = window.innerWidth <= 1024; // Adjust the threshold as needed
+
+    if (isMobileView) {
+
+
+        var showSku = true; // Gösterilip gösterilmeyeceğini belirtin
+        var instantSearchItem = createInstantSearchItem(data, showSku);
+
+        // Oluşturulan öğeyi belirli bir yerde göstermek için örneğin body'e ekleyebilirsiniz
+        var x = document.querySelector(".store-search-box");
+        x.appendChild(instantSearchItem);
+    }
+
 </script>
 
 <script>
